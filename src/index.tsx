@@ -1,15 +1,24 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import App from "./App";
 import { ToastContainer } from "react-toastify";
+import Display from "./components/screens/display";
+import Editor from "./components/screens/editor";
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <App />
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Display selectedFile="SuperSaver" />,
+  },
+  {
+    path: "/editor",
+    element: <Editor />,
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+  <>
+    <RouterProvider router={router} />
     <ToastContainer />
-  </React.StrictMode>
+  </>
 );
